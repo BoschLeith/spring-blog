@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Guess a Roll</title>
+</head>
+<body>
+
+<p>Guess a dice roll:</p>
+<form action="#" method="post">
+	<select name="userGuess" id="userGuess">
+		<option name="1" value="1">1</option>
+		<option name="2" value="2">2</option>
+		<option name="3" value="3">3</option>
+		<option name="4" value="4">4</option>
+		<option name="5" value="5">5</option>
+		<option name="6" value="6">6</option>
+	</select>
+	<button type="submit">Submit</button>
+</form>
+
+<h1 th:text="${userGuess}"></h1>
+<h1 th:text="${randomRoll}"></h1>
+<h1 th:text="${correct}"></h1>
+
+</body>
+</html>
