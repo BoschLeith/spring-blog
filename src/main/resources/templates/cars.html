@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cars</title>
+</head>
+<body>
+
+<h1>All Cars</h1>
+<div th:each="car : ${cars}">
+	<p th:text="${car.getMake()}+ ' ' + ${car.getModel()}"></p>
+</div>
+
+<h1>Model Y</h1>
+<div th:each="car : ${modelY}">
+	<p th:text="${car.getMake()}"></p>
+	<p th:text="${car.getModel()}"></p>
+</div>
+
+</body>
+</html>
