@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Post Index</title>
@@ -7,8 +7,8 @@
 <body>
 <h1>Shows all post</h1>
 <div th:each="post : ${Posts}">
-	<h1 th:text="${post.title}"></h1>
-	<p th:text="${post.body}"></p>
+	<h1 th:text="${post.getTitle()}"></h1>
+	<p th:text="${post.getBody()}"></p>
 </div>
 </body>
 </html>
