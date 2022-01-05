@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-	<div th:insert="header :: header"></div>
+	<div th:insert="fragments/header :: header"></div>
 	<meta charset="UTF-8">
 	<title>Guess a Roll</title>
 </head>
 <body>
-<div th:insert="navbar :: navbar"></div>
+<div th:insert="fragments/navbar :: navbar"></div>
 
 <p>Guess a dice roll:</p>
 <form action="#" method="post">
+	<label for="userGuess"></label>
 	<select name="userGuess" id="userGuess">
 		<option name="1" value="1">1</option>
 		<option name="2" value="2">2</option>
@@ -25,6 +26,6 @@
 <h1 th:text="${randomRoll}"></h1>
 <h1 th:text="${message}"></h1>
 
-<div th:insert="footer :: footer"></div>
+<div th:insert="fragments/footer :: footer"></div>
 </body>
 </html>

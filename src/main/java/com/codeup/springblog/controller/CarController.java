@@ -1,5 +1,6 @@
-package com.codeup.springblog.controllers;
+package com.codeup.springblog.controller;
 
+import com.codeup.springblog.repository.CarRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
