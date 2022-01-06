@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
+<head th:insert="fragments/header">
 	<meta charset="UTF-8">
 	<title>Post Index</title>
 </head>
 <body>
+<nav th:insert="fragments/navbar"></nav>
 <h1>Shows all post</h1>
 <div th:each="post : ${Posts}">
-	<h1 th:text="${post.getTitle()}"></h1>
+	<h4 th:text="${post.getTitle()}"></h4>
 	<p th:text="${post.getBody()}"></p>
 	<form th:action="'/posts/delete/' + ${post.getId()}" method="post">
-		<button>Delete</button>
+		<button class="btn btn-danger">Delete</button>
 	</form>
 	<form th:action="'/posts/edit/' + ${post.getId()}" method="get">
-		<button>Edit</button>
+		<button class="btn btn-primary">Edit</button>
 	</form>
 </div>
+<footer th:insert="fragments/footer"></footer>
 </body>
 </html>

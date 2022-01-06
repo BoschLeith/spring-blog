@@ -43,7 +43,7 @@ public class PostController {
 	}
 
 	@GetMapping("/posts/edit/{id}")
-	public String getPostById(Model model, @PathVariable long id) {
+	public String editPost(Model model, @PathVariable long id) {
 		Post post = postDao.getById(id);
 		model.addAttribute("post", post);
 
@@ -51,18 +51,17 @@ public class PostController {
 	}
 
 	@PostMapping("posts/edit/{id}")
-	public String editPostById(@RequestParam(name = "title") String title, @RequestParam(name = "body") String body, @PathVariable long id, Model model) {
+	public String saveEditPost(@RequestParam(name = "title") String title, @RequestParam(name = "body") String body, @PathVariable long id) {
 		Post post = postDao.getById(id);
 		post.setTitle(title);
 		post.setBody(body);
 		postDao.save(post);
-		model.addAttribute("Posts", postDao.findAll());
 
 		return "redirect:/posts";
 	}
 
 	@PostMapping("/posts/delete/{id}")
-	public String deletePostById(@PathVariable long id, Model model) {
+	public String deletePostById(@PathVariable long id) {
 		postDao.deleteById(id);
 
 		return "redirect:/posts";
