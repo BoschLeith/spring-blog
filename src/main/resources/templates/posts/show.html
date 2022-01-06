@@ -8,6 +8,8 @@
 <nav th:insert="fragments/navbar"></nav>
 <h1 th:text="${Post.title}"></h1>
 <p th:text="${Post.body}"></p>
+<span>Created by: </span>
+<span th:text="${Post.getUser().getEmail()}"></span>
 <footer th:insert="fragments/footer"></footer>
 </body>
 </html>
