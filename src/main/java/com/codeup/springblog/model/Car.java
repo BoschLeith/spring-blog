@@ -16,6 +16,9 @@ public class Car {
 	@Column(nullable = false, length = 25)
 	private String model;
 
+	@ManyToOne
+	private Owner owner;
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -42,5 +45,13 @@ public class Car {
 
 	public void setModel(String model) {
 		this.model = model;
+	}
+
+	public Owner getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Owner owner) {
+		this.owner = owner;
 	}
 }
