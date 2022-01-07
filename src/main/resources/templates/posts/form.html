@@ -7,10 +7,10 @@
 <body>
 <nav th:insert="fragments/navbar"></nav>
 <form th:action="@{#}" th:method="post" th:object="${post}">
-	<label><span th:text="${editTitle}">Title: </span>
+	<label><span th:text="${titleLabel}">Title: </span>
 		<input th:field="*{title}" th:value="${post.getTitle()}" >
 	</label>
-	<label><span th:text="${editBody}">Body: </span>
+	<label><span th:text="${bodyLabel}">Body: </span>
 		<input th:field="*{body}" th:value="${post.getBody()}" >
 	</label>
 	<button type="submit" class="btn btn-primary">Submit</button>

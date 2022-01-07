@@ -2,16 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:insert="fragments/header">
 	<meta charset="UTF-8">
-	<title>Edit Post</title>
+	<title>Create Post</title>
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
-<form th:action="@{#}" th:method="post" th:object="${post}">
-	<label><span th:text="${editTitle}">Title: </span>
-		<input th:field="*{title}" th:value="${post.getTitle()}" >
+<form th:action="@{/posts/create}" th:method="post" th:object="${post}">
+	<label>Title:
+		<input th:field="*{title}">
 	</label>
-	<label><span th:text="${editBody}">Body: </span>
-		<input th:field="*{body}" th:value="${post.getBody()}" >
+	<label>Body:
+		<input th:field="*{body}">
 	</label>
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
