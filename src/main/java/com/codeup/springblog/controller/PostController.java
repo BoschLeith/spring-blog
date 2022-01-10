@@ -1,12 +1,17 @@
 package com.codeup.springblog.controller;
 
 import com.codeup.springblog.model.Post;
+import com.codeup.springblog.model.User;
 import com.codeup.springblog.repository.PostRepository;
 import com.codeup.springblog.repository.UserRepository;
 import com.codeup.springblog.service.EmailService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class PostController {
@@ -47,7 +52,8 @@ public class PostController {
 
 	@PostMapping("/posts/create")
 	public String createPost(@ModelAttribute Post post) {
-		post.setUser(userDao.getById(1L));
+		User postCreator = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		post.setUser(postCreator);
 		String postBody = "Your post has been created. \n" + post.getTitle() + ":\n" + post.getBody();
 		emailservice.prepareAndSend(post, "Post Created", postBody);
 		postDao.save(post);

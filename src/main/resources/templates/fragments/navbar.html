@@ -1,7 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	  lang="en">
 <div th:fragment="navbar">
 	<nav class="navbar navbar-light bg-light">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="/posts">Navbar</a>
+			<div sec:authorize="isAuthenticated()">
+				<form th:action="@{/logout}" th:method="post">
+					<button class="btn-link btn" style="margin-top: 8px">Logout</button>
+				</form>
+			</div>
 			<form class="d-flex">
 				<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 				<button class="btn btn-outline-success" type="submit">Search</button>
@@ -9,3 +18,4 @@
 		</div>
 	</nav>
 </div>
+</html>

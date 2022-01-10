@@ -1,6 +1,7 @@
 package com.codeup.springblog.service;
 
 import com.codeup.springblog.model.Post;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 @Service("mailService")
 public class EmailService {
 
+	@Autowired
 	public JavaMailSender emailSender;
 
 	@Value("${spring.mail.from}")
