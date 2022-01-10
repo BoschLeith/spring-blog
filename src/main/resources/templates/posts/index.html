@@ -6,16 +6,24 @@
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
-<h1>Shows all post</h1>
-<div th:each="post : ${Posts}">
-	<h4 th:text="${post.getTitle()}"></h4>
-	<p th:text="${post.getBody()}"></p>
-	<form th:action="'/posts/delete/' + ${post.getId()}" method="post">
-		<button class="btn btn-danger">Delete</button>
-	</form>
-	<form th:action="'/posts/edit/' + ${post.getId()}" method="get">
-		<button class="btn btn-primary">Edit</button>
-	</form>
+<div class="container">
+	<h1>Shows all post</h1>
+	<div class="row row-cols-3 g-2">
+		<div class="col text-center" th:each="post : ${Posts}">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title" th:text="${post.getTitle()}"></h5>
+					<p class="card-text" th:text="${post.getBody()}"></p>
+					<form class="col" th:action="'/posts/edit/' + ${post.getId()}" method="get">
+						<button class="btn btn-primary">Edit</button>
+					</form>
+					<form class="col" th:action="'/posts/delete/' + ${post.getId()}" method="post">
+						<button class="btn btn-danger">Delete</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <footer th:insert="fragments/footer"></footer>
 </body>

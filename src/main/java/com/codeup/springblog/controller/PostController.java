@@ -48,7 +48,8 @@ public class PostController {
 	@PostMapping("/posts/create")
 	public String createPost(@ModelAttribute Post post) {
 		post.setUser(userDao.getById(1L));
-		emailservice.prepareAndSend(post, "Post Created", "Your post has been created.");
+		String postBody = "Your post has been created. \n" + post.getTitle() + ":\n" + post.getBody();
+		emailservice.prepareAndSend(post, "Post Created", postBody);
 		postDao.save(post);
 
 		return "redirect:/posts";
